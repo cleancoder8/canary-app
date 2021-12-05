@@ -28,7 +28,9 @@ jobs:
           npm install
           pip3 install -r lambda/requirements.txt -t lambda
       - name: Unit test
-        run: PYTHONPATH=lambda:test/unit-test pytest test/unit-test
+        run: |
+          pip3 install -r lambda/requirements.txt
+          PYTHONPATH=lambda:test/unit-test pytest test/unit-test
       - name: Deploy
         run: npm run cdk deploy
 
