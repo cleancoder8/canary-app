@@ -21,10 +21,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install Dependencies
-        run: |
-          ls
-          npm install
+        run: npm install
       - name: synthesis
-        run: cdk synth
+        run: npm run cdk synth -- -v -o dist
 
 
