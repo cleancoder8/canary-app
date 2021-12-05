@@ -14,5 +14,6 @@
     "@aws-cdk/aws-efs:defaultEncryptionAtRest": true,
     "@aws-cdk/aws-lambda:recognizeVersionProps": true,
     "@aws-cdk/aws-cloudfront:defaultSecurityPolicyTLSv1.2_2021": true
-  }
+  },
+  "github-conn": "arn:aws:codestar-connections:us-east-1:063764846672:connection/5707fe66-2532-411b-82ed-e52992e827e3"
 }
