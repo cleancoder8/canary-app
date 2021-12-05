@@ -25,8 +25,8 @@ jobs:
           aws-region: us-east-2
       - name: Install Dependencies
         run: |
-        npm install
-        pip3 install -r lambda/requirments.txt
+          npm install
+          pip3 install -r lambda/requirments.txt
       - name: Unit test
         run: pytest test/unit-test
       - name: Deploy
