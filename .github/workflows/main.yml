@@ -20,7 +20,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Dependencies
-        run: npm install
+        run: |
+          ls
+          npm install
       - name: synthesis
         run: cdk synth
 
