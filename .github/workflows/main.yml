@@ -26,7 +26,7 @@ jobs:
       - name: Install Dependencies
         run: |
           npm install
-          pip3 install -r lambda/requirments.txt
+          pip3 install -r lambda/requirements.txt -t lambda
       - name: Unit test
         run: pytest test/unit-test
       - name: Deploy
