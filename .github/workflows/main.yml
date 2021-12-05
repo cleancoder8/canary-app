@@ -19,7 +19,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: "template"
+      - name: Install Dependencies
+        run: npm install
+      - name: synthesis
         run: cdk synth
 
 
