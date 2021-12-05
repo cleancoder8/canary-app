@@ -13,35 +13,24 @@ on:
 
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  ci-cd:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install Dependencies
-        run: npm install
-      - name: synthesis
-        run: npm run cdk synth -- -v -o dist
-      - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v2
-        with:
-          name: build_artifact.zip
-          path: .
-          retention-days: 1
-  deploy:
-      runs-on: ubuntu-latest
-      needs: build
-      steps:
-      - name: Download a single artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: build_artifact.zip
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
           aws-region: us-east-2
-      - name: deploy
+      - name: Install Dependencies
+        run: |
+        npm install
+        pip3 install -r lambda/requirments.txt
+      - name: Unit test
+        run: pytest test/unit-test
+      - name: Deploy
         run: npm run cdk deploy
+
 
 
