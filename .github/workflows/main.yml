@@ -52,16 +52,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.cache/pip
-          key: ${{ hashFiles('setup.py') }}-${{ hashFiles('requirements.txt') }}
-      - name: Unit test
-        run: |
-          pip3 install -r lambda/requirements.txt
-          PYTHONPATH=lambda:test/unit-test pytest test/unit-test
-  reports:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
+          key: ${{ hashFiles('lambda/requirements.txt') }}
       - name: Unit test
         run: |
           pip3 install -r lambda/requirements.txt
@@ -70,6 +61,7 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
