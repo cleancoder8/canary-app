@@ -62,7 +62,7 @@ jobs:
           pip3 install -r lambda/requirements.txt
           PYTHONPATH=lambda:test/unit-test pytest test/unit-test
   deploy:
-    needs: test
+    needs: unit-test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
