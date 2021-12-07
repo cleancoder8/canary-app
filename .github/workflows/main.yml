@@ -45,7 +45,7 @@ jobs:
           npm install
           pip3 install -r lambda/requirements.txt -t lambda
 
-  test:
+  unit-test:
     needs: build
     runs-on: ubuntu-latest
     steps:
