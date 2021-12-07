@@ -60,18 +60,8 @@ jobs:
       - name: Unit test
         run: |
           pip3 install -r lambda/requirements.txt
-          PYTHONPATH=lambda:test/unit-test pytest test/unit-test
-  coverage:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Build coverage report
-        run: |
-          pip3 install -r lambda/requirements.txt
           PYTHONPATH=lambda:test/unit-test pytest test/unit-test --cov=./ --cov-report=xml
-
-      - name: "Upload coverage to Codecov"
+      - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
         with:
           fail_ci_if_error: true
