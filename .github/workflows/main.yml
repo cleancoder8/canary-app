@@ -65,8 +65,20 @@ jobs:
         uses: codecov/codecov-action@v2
         with:
           fail_ci_if_error: true
+  publish-docs:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy docs
+        uses: mhausenblas/mkdocs-deploy-gh-pages@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CONFIG_FILE: mkdocs.yml
+          REQUIREMENTS: lambda/requirements.txt
+
   deploy:
-    needs: unit-test
+    needs: [unit-test, publish-docs]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

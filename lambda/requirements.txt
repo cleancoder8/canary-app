@@ -2,3 +2,4 @@ aws_lambda_powertools
 boto3
 pytest
 pytest-cov
+mkdocs
