@@ -1,2 +1,2 @@
-# Ayush Dhar
+# Ayush Dhar Mehak Kaul
 
