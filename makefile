@@ -13,7 +13,7 @@ build.install.dependencies: build.install.python.lambda build.install.cdk
 ###############################################################################
 # test
 ###############################################################################
-test.unit.pytest: 
+test.unit.pytest: build.install.python
 	PYTHONPATH=lambda:test/unit-test pytest test/unit-test --cov=./ --cov-report=xml
 ###############################################################################
 # deploy
