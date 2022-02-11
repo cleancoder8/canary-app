@@ -42,7 +42,7 @@ jobs:
           key: ${{ runner.os }}-build-${{ env.python-cache-name }}-${{ hashFiles('lambda/requirements.txt') }}
       - name: Install Dependencies
         run: |
-          build.install.dependencies
+          make build.install.dependencies
 
   unit-test:
     needs: build
